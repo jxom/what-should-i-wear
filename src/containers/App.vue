@@ -47,7 +47,7 @@
     background-color: #f9f9f9;
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif !important;
+    font-family: Lato,Helvetica,Arial,sans-serif; !important;
     -webkit-font-smoothing: antialiased !important;
   }
   * {

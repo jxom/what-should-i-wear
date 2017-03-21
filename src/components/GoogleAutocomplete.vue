@@ -75,6 +75,6 @@
     display: flex;
     align-items: center;
     padding-left: 20px;
-    font-family: 'Montserrat', sans-serif !important;
+    font-family: Lato,Helvetica,Arial,sans-serif; !important;
   }
 </style>
