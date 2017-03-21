@@ -1,11 +1,11 @@
 <template>
   <div>
     <welcome
-      v-if="!isDressing && !outfit"
+      v-show="!isDressing && !outfit"
       :onDressClient="handleDressClient"
     ></welcome>
-    <loading v-if="isDressing"></loading>
-    <outfit v-if="!isDressing && outfit" :outfit="outfit"></outfit>
+    <loading v-show="isDressing"></loading>
+    <outfit v-show="!isDressing && outfit" :outfit="outfit"></outfit>
   </div>
 </template>
 
