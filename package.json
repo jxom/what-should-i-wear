@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "name": "what-should-i-wear",
+  "description": "My neat Vue app",
+  "version": "0.0.1",
+  "repository": {},
+  "scripts": {
+    "lint": "eslint src/",
+    "dev": "vbuild -d",
+    "build": "vbuild",
+    "start": "serve ./dist --single"
+  },
+  "devDependencies": {
+    "eslint": "^3.18.0",
+    "eslint-config-vue": "^2.0.2",
+    "eslint-plugin-vue": "^2.0.1",
+    "vbuild": "^6.0.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "flat-ui": "^2.1.1",
+    "serve": "latest",
+    "url-loader": "^0.5.8",
+    "vue-resource": "^1.2.1"
+  }
+}
