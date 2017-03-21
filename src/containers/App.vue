@@ -48,6 +48,7 @@
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased !important;
+    font-family: "Lato", Helvetica, Arial, sans-serif !important;
   }
   * {
     box-sizing: border-box;
