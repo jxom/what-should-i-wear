@@ -2,7 +2,7 @@
   "private": true,
   "name": "what-should-i-wear",
   "description": "A useful web app which tells you what to wear based on the weather conditions for the day!",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "repository": "https://github.com/jxom/what-should-i-wear",
   "scripts": {
     "prebuild": "npm run test",
