@@ -1,14 +1,17 @@
 {
   "private": true,
   "name": "what-should-i-wear",
-  "description": "My neat Vue app",
+  "description": "A useful web app which tells you what to wear based on the weather conditions for the day!",
   "version": "0.0.1",
-  "repository": {},
+  "repository": "https://github.com/jxom/what-should-i-wear",
   "scripts": {
-    "lint": "eslint --ext .vue,.js src/",
-    "dev": "vbuild -d",
+    "prebuild": "npm run test",
     "build": "vbuild",
-    "start": "serve ./dist --single"
+    "dev": "vbuild -d",
+    "lint": "eslint --ext .vue,.js src/",
+    "start": "serve ./dist --single",
+    "pretest": "npm run lint",
+    "test": "echo 'coming soon (or is it?)'"
   },
   "devDependencies": {
     "eslint": "^3.18.0",
