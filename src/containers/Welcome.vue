@@ -37,6 +37,9 @@
         </button>
       </div>
     </div>
+    <div :class="$style.marginTop50" class="row text-center">
+      Made with no 👖 on by <a href="https://github.com/jxom" target="_blank">Jake Moxey</a>
+    </div>
   </div>
 </template>
 
@@ -109,6 +112,10 @@
 
   .marginTop20 {
     margin-top: 20px;
+  }
+
+  .marginTop50 {
+    margin-top: 50px;
   }
 
   .input {
