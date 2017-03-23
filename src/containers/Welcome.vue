@@ -10,7 +10,11 @@
     </div>
     <div class="row text-center" :class="$style.marginTop20">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
-        <div class="form-group">
+        <div v-show="isFetchingLocationPermissions">
+          <loading-icon></loading-icon>
+          Finding where you live... #stalker
+        </div>
+        <div class="form-group" v-show="!isFetchingLocationPermissions">
           <google-autocomplete
             id="where"
             classname="form-control"
@@ -38,11 +42,14 @@
 
 <script>
   import GoogleAutocomplete from '@/components/GoogleAutocomplete'
+  import LoadingIcon from '@/components/LoadingIcon'
   import shirt from './shirt.png'
+
   export default {
     name: 'welcome',
     components: {
-      GoogleAutocomplete
+      GoogleAutocomplete,
+      LoadingIcon,
     },
     props: {
       onDressClient: {
@@ -50,7 +57,32 @@
         required: true
       }
     },
-    data: () => ({ shirt, placeData: null, placeInput: '' }),
+    data: () => ({
+      shirt,
+      placeData: null,
+      placeInput: '',
+      isFetchingLocationPermissions: true,
+    }),
+    mounted() {
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(async ({ coords: { latitude, longitude } }) => {
+          this.isFetchingLocationPermissions = false;
+          if (latitude && longitude) {
+            const params = {
+              latlng: `${latitude},${longitude}`,
+              key: 'AIzaSyCZw6cBCELkfCluoErvZetAYA92upRWUWo',
+            }
+            const res = await this.$http.get('https://maps.googleapis.com/maps/api/geocode/json', { params })
+            this.placeData = { latitude, longitude }
+            this.placeInput = res.body.results[0].formatted_address
+          }
+        }, () => {
+          this.isFetchingLocationPermissions = false
+        })
+      } else {
+        this.isFetchingLocationPermissions = false
+      }
+    },
     methods: {
       handleDressClient() {
         this.onDressClient(this.placeData)
@@ -67,6 +99,12 @@
     color: #84dbff;
     font-size: 70px;
     font-weight: 700;
+  }
+
+  @media screen and (max-width: 768px) {
+    .header {
+      font-size: 30px;
+    }
   }
 
   .marginTop20 {

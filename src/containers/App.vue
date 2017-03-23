@@ -4,20 +4,24 @@
       v-show="!isDressing && !outfit"
       :onDressClient="handleDressClient"
     ></welcome>
-    <loading v-show="isDressing"></loading>
-    <outfit v-show="!isDressing && outfit" :outfit="outfit"></outfit>
+    <dressing v-show="isDressing"></dressing>
+    <outfit
+      v-show="!isDressing && outfit"
+      :outfit="outfit"
+      :handleUndressClient="handleUndressClient"
+    ></outfit>
   </div>
 </template>
 
 <script>
   import Welcome from './Welcome'
-  import Loading from '../components/Loading'
+  import Dressing from '../components/Dressing'
   import Outfit from './Outfit'
 
   export default {
     components: {
       Welcome,
-      Loading,
+      Dressing,
       Outfit,
     },
     name: 'app',
@@ -25,14 +29,17 @@
     methods: {
       async handleDressClient({ latitude, longitude }) {
         if (latitude && longitude) {
-          const params = { lat: latitude, lng: longitude }
+          const params = { lat: latitude, lng: longitude, getOutfitPrediction: true }
           this.isDressing = true
           const res = await this.$http.get('https://climate.now.sh', {
             params,
           })
           this.isDressing = false
-          this.outfit = 'clothes'
+          this.outfit = res.body.outfitPrediction
         }
+      },
+      handleUndressClient() {
+        this.outfit = null
       }
     }
   }
