@@ -22,23 +22,23 @@
     components: {
       Welcome,
       Dressing,
-      Outfit,
+      Outfit
     },
     name: 'app',
     data: () => ({ isDressing: false, outfit: null }),
     methods: {
-      async handleDressClient({ latitude, longitude }) {
+      async handleDressClient ({ latitude, longitude }) {
         if (latitude && longitude) {
           const params = { lat: latitude, lng: longitude, getOutfitPrediction: true }
           this.isDressing = true
           const res = await this.$http.get('https://climate.now.sh', {
-            params,
+            params
           })
           this.isDressing = false
           this.outfit = res.body.outfitPrediction
         }
       },
-      handleUndressClient() {
+      handleUndressClient () {
         this.outfit = null
       }
     }

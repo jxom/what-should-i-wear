@@ -52,7 +52,7 @@
     name: 'welcome',
     components: {
       GoogleAutocomplete,
-      LoadingIcon,
+      LoadingIcon
     },
     props: {
       onDressClient: {
@@ -64,16 +64,16 @@
       shirt,
       placeData: null,
       placeInput: '',
-      isFetchingLocationPermissions: true,
+      isFetchingLocationPermissions: true
     }),
-    mounted() {
+    mounted () {
       if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(async ({ coords: { latitude, longitude } }) => {
-          this.isFetchingLocationPermissions = false;
+        navigator.geolocation.getCurrentPosition(async ({ coords: { latitude, longitude }}) => {
+          this.isFetchingLocationPermissions = false
           if (latitude && longitude) {
             const params = {
               latlng: `${latitude},${longitude}`,
-              key: 'AIzaSyCZw6cBCELkfCluoErvZetAYA92upRWUWo',
+              key: 'AIzaSyCZw6cBCELkfCluoErvZetAYA92upRWUWo'
             }
             const res = await this.$http.get('https://maps.googleapis.com/maps/api/geocode/json', { params })
             this.placeData = { latitude, longitude }
@@ -87,10 +87,10 @@
       }
     },
     methods: {
-      handleDressClient() {
+      handleDressClient () {
         this.onDressClient(this.placeData)
       },
-      handleReceivePlaceData(placeData) {
+      handleReceivePlaceData (placeData) {
         this.placeData = placeData
       }
     }

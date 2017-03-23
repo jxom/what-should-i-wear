@@ -67,7 +67,7 @@
       }
     },
     computed: {
-      predictedOutfit() {
+      predictedOutfit () {
         if (this.outfit) {
           return this.outfit
         }
@@ -75,7 +75,7 @@
       }
     },
     methods: {
-      humanizeOutfitItem(outfitItem) {
+      humanizeOutfitItem (outfitItem) {
         if (!outfitItem) {
           return ''
         } else if (Array.isArray(outfitItem)) {
@@ -94,7 +94,7 @@
         }
         return `<strong class="capitalize">${outfitItem.value}</strong>`
       },
-      getOutfitItemImage(outfitItem) {
+      getOutfitItemImage (outfitItem) {
         if (!outfitItem) {
           return ''
         } else if (Array.isArray(outfitItem)) {

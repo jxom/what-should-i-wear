@@ -1,3 +1,13 @@
 {
-  "extends": "vue"
+  "extends": "vue",
+  "parser": "babel-eslint",
+  "plugins": [
+    "html"
+  ],
+  "globals": {
+    "google": true
+  },
+  "rules": {
+    "camelcase": 0
+  }
 }
